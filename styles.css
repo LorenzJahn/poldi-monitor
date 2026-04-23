@@ -90,6 +90,14 @@ h3 { font-size: 17px; }
   letter-spacing: 0.03em;
 }
 
+.problem-badge {
+  font-size: 12px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #fdf3e8;
+  color: #8b5e14;
+}
+
 .layout-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.8fr);
@@ -204,7 +212,7 @@ h3 { font-size: 17px; }
 .metrics-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .empty {

@@ -1,23 +1,8 @@
-const allowedStatuses = [
-  "queued",
-  "running",
-  "completed",
-  "failed",
-  "cancelled",
-  "blocked",
-];
+const allowedStatuses = ["queued", "running", "completed", "failed", "cancelled", "blocked"];
 
-const allowedTaskTypes = [
-  "research",
-  "writing",
-  "crm",
-  "social_media",
-  "airbnb",
-  "admin",
-  "system",
-];
+const allowedTaskTypes = ["planning", "frontend", "repo", "deployment", "observability", "review", "coordination", "system"];
 
-const allowedTriggerSources = ["telegram", "powershell", "internal"];
+const allowedTriggerSources = ["telegram", "powershell", "internal", "schedule"];
 
 const allowedReasonCategories = [
   "none",
@@ -36,96 +21,117 @@ const now = new Date("2026-04-23T09:30:00Z");
 
 const parentTasks = [
   {
-    task_id: "p-1001",
-    title: "CRM Leads bereinigen Tirol",
-    task_type: "crm",
+    task_id: "p-2101",
+    title: "Frontend-Prototyp erstellen",
+    task_type: "frontend",
     status: "running",
-    trigger_source: "telegram",
-    created_at: "2026-04-23T08:02:00Z",
-    queued_at: "2026-04-23T08:03:00Z",
+    trigger_source: "internal",
+    created_at: "2026-04-23T07:58:00Z",
+    queued_at: "2026-04-23T08:00:00Z",
     started_at: "2026-04-23T08:05:00Z",
     finished_at: null,
     last_update_at: "2026-04-23T09:27:00Z",
     model_name: "gpt-5.3-codex",
-    total_tokens: 22100,
-    estimated_cost: 2.46,
+    total_tokens: 18750,
+    estimated_cost: 1.96,
     reason_category: "none",
     reason_short: "",
-    result_summary: "Aktive Dublettenbereinigung mit Priorisierung auf Innsbruck/Kitzbühel läuft.",
+    result_summary: "Main-Layout, Task-Karten und Detailpanel sind implementiert; Feinschliff der Zeitdarstellung läuft.",
     substeps: [
-      "Kontaktquellen harmonisieren",
-      "Duplikate matchen",
-      "Entscheidungsliste erzeugen",
+      "Task-Karten semantisch strukturieren",
+      "Statusfarben harmonisieren",
+      "Detailpanel-Inhalte priorisieren",
     ],
   },
   {
-    task_id: "p-1002",
-    title: "Mailentwurf an Stütz erstellen",
-    task_type: "writing",
+    task_id: "p-2102",
+    title: "UI-Briefing V1 finalisieren",
+    task_type: "planning",
     status: "completed",
     trigger_source: "telegram",
-    created_at: "2026-04-23T06:45:00Z",
-    queued_at: "2026-04-23T06:45:30Z",
-    started_at: "2026-04-23T06:47:00Z",
+    created_at: "2026-04-23T06:21:00Z",
+    queued_at: "2026-04-23T06:22:00Z",
+    started_at: "2026-04-23T06:24:00Z",
     finished_at: "2026-04-23T06:58:00Z",
     last_update_at: "2026-04-23T06:58:00Z",
     model_name: "gpt-5.3-codex",
-    total_tokens: 6900,
-    estimated_cost: 0.72,
+    total_tokens: 7420,
+    estimated_cost: 0.79,
     reason_category: "none",
     reason_short: "",
-    result_summary: "Mailentwurf mit 3 Tonalitätsvarianten und finaler Empfehlung abgeschlossen.",
+    result_summary: "Briefing mit finalen UI-Prinzipien, Scope und Übergabe an Frontend umgesetzt.",
   },
   {
-    task_id: "p-1003",
-    title: "Airbnb Preisprüfung Mai",
-    task_type: "airbnb",
-    status: "failed",
+    task_id: "p-2103",
+    title: "Repository einrichten",
+    task_type: "repo",
+    status: "completed",
     trigger_source: "powershell",
-    created_at: "2026-04-23T05:12:00Z",
-    queued_at: "2026-04-23T05:12:20Z",
-    started_at: "2026-04-23T05:13:00Z",
-    finished_at: "2026-04-23T05:36:00Z",
-    last_update_at: "2026-04-23T05:36:00Z",
+    created_at: "2026-04-23T05:50:00Z",
+    queued_at: "2026-04-23T05:50:20Z",
+    started_at: "2026-04-23T05:52:00Z",
+    finished_at: "2026-04-23T06:10:00Z",
+    last_update_at: "2026-04-23T06:10:00Z",
     model_name: "gpt-5.3-codex",
-    total_tokens: 18400,
-    estimated_cost: 1.94,
-    reason_category: "api_error",
-    reason_short: "Preisfeed temporär nicht erreichbar",
-    error_message: "HTTP 502 vom Partner-Endpoint bei 3 aufeinanderfolgenden Versuchen.",
-    result_summary: "Abbruch nach Retries. Keine finalen Preisempfehlungen gespeichert.",
-    substep_count: 9,
+    total_tokens: 3880,
+    estimated_cost: 0.42,
+    reason_category: "none",
+    reason_short: "",
+    result_summary: "Repo-Struktur, Basisdateien und Branch-Konventionen bereitgestellt.",
   },
   {
-    task_id: "p-1004",
-    title: "Stakeholder-Recherche SoHO",
-    task_type: "research",
+    task_id: "p-2104",
+    title: "GitHub Pages aktivieren",
+    task_type: "deployment",
+    status: "failed",
+    trigger_source: "internal",
+    created_at: "2026-04-23T07:02:00Z",
+    queued_at: "2026-04-23T07:03:00Z",
+    started_at: "2026-04-23T07:04:00Z",
+    finished_at: "2026-04-23T07:14:00Z",
+    last_update_at: "2026-04-23T07:14:00Z",
+    model_name: "gpt-5.3-codex",
+    total_tokens: 5010,
+    estimated_cost: 0.53,
+    reason_category: "external_system_wait",
+    reason_short: "GitHub API nicht erreichbar",
+    error_message: "Repository Settings Endpoint lieferte mehrfach HTTP 503.",
+    operational_effect: "Kein Live-Preview-Link verfügbar; Review der neuen Oberfläche ist verzögert.",
+    recovery_hint: "Task kann später erneut gestartet werden, sobald GitHub stabil antwortet.",
+    result_summary: "Aktivierung wurde nicht übernommen, Deployment bleibt deaktiviert.",
+  },
+  {
+    task_id: "p-2105",
+    title: "Logging-Spec vorbereiten",
+    task_type: "observability",
     status: "blocked",
     trigger_source: "internal",
-    created_at: "2026-04-23T04:50:00Z",
-    queued_at: "2026-04-23T04:50:10Z",
-    started_at: "2026-04-23T04:52:00Z",
+    created_at: "2026-04-23T08:33:00Z",
+    queued_at: "2026-04-23T08:34:00Z",
+    started_at: "2026-04-23T08:36:00Z",
     finished_at: null,
-    last_update_at: "2026-04-23T05:05:00Z",
+    last_update_at: "2026-04-23T08:52:00Z",
     model_name: "gpt-5.3-codex",
-    total_tokens: 8300,
-    estimated_cost: 0.87,
-    reason_category: "waiting_for_input",
-    reason_short: "Freigabe für Zielliste fehlt",
-    error_message: "Warten auf bestätigte Zielbranchenpriorisierung.",
-    result_summary: "Vorarbeit abgeschlossen, nächste Schritte pausiert bis Input vorliegt.",
+    total_tokens: 2950,
+    estimated_cost: 0.31,
+    reason_category: "dependency_pending",
+    reason_short: "Event-Feldliste noch offen",
+    error_message: "Namensschema für Trace- und Session-IDs fehlt.",
+    operational_effect: "Logevents sind aktuell nicht konsistent vergleichbar; spätere Fehleranalyse wird erschwert.",
+    recovery_hint: "Task kann fortgesetzt werden, sobald das Feldschema freigegeben ist.",
+    result_summary: "Strukturrahmen steht, finale Spezifikation wartet auf Definitionsfreigabe.",
   },
   {
-    task_id: "p-1005",
-    title: "Social Media Wochenplan Q18",
-    task_type: "social_media",
+    task_id: "p-2106",
+    title: "PR prüfen und mergen",
+    task_type: "review",
     status: "queued",
-    trigger_source: "telegram",
-    created_at: "2026-04-23T09:10:00Z",
-    queued_at: "2026-04-23T09:10:00Z",
+    trigger_source: "schedule",
+    created_at: "2026-04-23T09:11:00Z",
+    queued_at: "2026-04-23T09:11:00Z",
     started_at: null,
     finished_at: null,
-    last_update_at: "2026-04-23T09:10:00Z",
+    last_update_at: "2026-04-23T09:11:00Z",
     model_name: "gpt-5.3-codex",
     total_tokens: 0,
     estimated_cost: null,
@@ -135,16 +141,16 @@ const parentTasks = [
     queue_position: 1,
   },
   {
-    task_id: "p-1006",
-    title: "Vertragsablagen April strukturieren",
-    task_type: "admin",
+    task_id: "p-2107",
+    title: "Review der Oberfläche",
+    task_type: "review",
     status: "queued",
-    trigger_source: "internal",
-    created_at: "2026-04-23T09:12:00Z",
-    queued_at: "2026-04-23T09:12:00Z",
+    trigger_source: "telegram",
+    created_at: "2026-04-23T09:14:00Z",
+    queued_at: "2026-04-23T09:14:00Z",
     started_at: null,
     finished_at: null,
-    last_update_at: "2026-04-23T09:12:00Z",
+    last_update_at: "2026-04-23T09:14:00Z",
     model_name: "gpt-5.3-codex",
     total_tokens: 0,
     estimated_cost: null,
@@ -152,6 +158,25 @@ const parentTasks = [
     reason_short: "",
     result_summary: "",
     queue_position: 2,
+  },
+  {
+    task_id: "p-2108",
+    title: "Rebriefing für nächste Iteration",
+    task_type: "coordination",
+    status: "queued",
+    trigger_source: "internal",
+    created_at: "2026-04-23T09:20:00Z",
+    queued_at: "2026-04-23T09:20:00Z",
+    started_at: null,
+    finished_at: null,
+    last_update_at: "2026-04-23T09:20:00Z",
+    model_name: "gpt-5.3-codex",
+    total_tokens: 0,
+    estimated_cost: null,
+    reason_category: "none",
+    reason_short: "",
+    result_summary: "",
+    queue_position: 3,
   },
 ];
 
@@ -166,18 +191,10 @@ render();
 
 function validateTasks(tasks) {
   tasks.forEach((task) => {
-    if (!allowedStatuses.includes(task.status)) {
-      throw new Error(`Ungültiger status in Mockdaten: ${task.status}`);
-    }
-    if (!allowedTaskTypes.includes(task.task_type)) {
-      throw new Error(`Ungültiger task_type in Mockdaten: ${task.task_type}`);
-    }
-    if (!allowedTriggerSources.includes(task.trigger_source)) {
-      throw new Error(`Ungültige trigger_source in Mockdaten: ${task.trigger_source}`);
-    }
-    if (!allowedReasonCategories.includes(task.reason_category)) {
-      throw new Error(`Ungültige reason_category in Mockdaten: ${task.reason_category}`);
-    }
+    if (!allowedStatuses.includes(task.status)) throw new Error(`Ungültiger status in Mockdaten: ${task.status}`);
+    if (!allowedTaskTypes.includes(task.task_type)) throw new Error(`Ungültiger task_type in Mockdaten: ${task.task_type}`);
+    if (!allowedTriggerSources.includes(task.trigger_source)) throw new Error(`Ungültige trigger_source in Mockdaten: ${task.trigger_source}`);
+    if (!allowedReasonCategories.includes(task.reason_category)) throw new Error(`Ungültige reason_category in Mockdaten: ${task.reason_category}`);
   });
 }
 
@@ -190,28 +207,15 @@ function render() {
     .filter((task) => task.status === "queued")
     .sort((a, b) => new Date(a.queued_at) - new Date(b.queued_at));
 
-  const exceptions = recentTasks.filter(
-    (task) => ["failed", "blocked"].includes(task.status) || (task.estimated_cost || 0) > 2.5
-  );
-
+  const alerts = buildOperationalAlerts(parentTasks);
   const metrics = buildMetrics(parentTasks);
   const selectedTask = parentTasks.find((task) => task.task_id === state.selectedTaskId) || null;
 
-  app.innerHTML = `
-    ${AppShell({
-      activeTask,
-      recentTasks,
-      queuedTasks,
-      exceptions,
-      metrics,
-      selectedTask,
-    })}
-  `;
-
+  app.innerHTML = `${AppShell({ activeTask, recentTasks, queuedTasks, alerts, metrics, selectedTask })}`;
   bindInteractions();
 }
 
-function AppShell({ activeTask, recentTasks, queuedTasks, exceptions, metrics, selectedTask }) {
+function AppShell({ activeTask, recentTasks, queuedTasks, alerts, metrics, selectedTask }) {
   return `
     ${HeaderStatus(parentTasks)}
     <main class="layout-grid">
@@ -222,7 +226,7 @@ function AppShell({ activeTask, recentTasks, queuedTasks, exceptions, metrics, s
       </section>
       <aside class="side-column">
         ${MetricsPanel(metrics)}
-        ${ExceptionsPanel(exceptions)}
+        ${AlertsPanel(alerts)}
       </aside>
     </main>
     ${TaskDetailPanel(selectedTask)}
@@ -230,10 +234,10 @@ function AppShell({ activeTask, recentTasks, queuedTasks, exceptions, metrics, s
 }
 
 function HeaderStatus(tasks) {
+  const systemConnectivity = "online";
+  const openProblems = tasks.filter((task) => ["failed", "blocked"].includes(task.status)).length;
   const hasRunning = tasks.some((task) => task.status === "running");
-  const hasBlocked = tasks.some((task) => task.status === "blocked");
-  const hasFailed = tasks.some((task) => task.status === "failed");
-  const overall = hasFailed ? "failed" : hasBlocked ? "blocked" : hasRunning ? "running" : "idle";
+  const processState = openProblems > 0 ? "blocked" : hasRunning ? "running" : "idle";
 
   return `
     <header class="header-status panel">
@@ -242,9 +246,10 @@ function HeaderStatus(tasks) {
         <p class="muted">Operatorisches Kontrollfenster</p>
       </div>
       <div class="header-state-wrap">
-        <span class="dot online" aria-hidden="true"></span>
-        <span class="status-label">Online</span>
-        <span class="overall-state state-${overall}">${overall}</span>
+        <span class="dot ${systemConnectivity}" aria-hidden="true"></span>
+        <span class="status-label">${systemConnectivity}</span>
+        <span class="overall-state state-${processState}">${processState}</span>
+        ${openProblems ? `<span class="problem-badge">${openProblems} offene Probleme</span>` : ""}
       </div>
     </header>
   `;
@@ -252,12 +257,7 @@ function HeaderStatus(tasks) {
 
 function ActiveTaskCard(task) {
   if (!task) {
-    return `
-      <section class="panel block">
-        <div class="block-head"><h2>Aktuell in Bearbeitung</h2></div>
-        <p class="empty">Derzeit keine aktive Aufgabe.</p>
-      </section>
-    `;
+    return `<section class="panel block"><div class="block-head"><h2>Aktuell in Bearbeitung</h2></div><p class="empty">Derzeit keine aktive Aufgabe.</p></section>`;
   }
 
   return `
@@ -268,9 +268,9 @@ function ActiveTaskCard(task) {
       </div>
       <h3>${task.title}</h3>
       <div class="meta-grid">
-        <div><span class="muted">Läuft seit</span><strong>${formatDateTime(task.started_at)}</strong></div>
+        <div><span class="muted">Status</span><strong>läuft seit ${formatTime(task.started_at)}</strong></div>
         <div><span class="muted">Aktuelle Dauer</span><strong>${formatDuration(new Date(task.started_at), now)}</strong></div>
-        <div><span class="muted">Letzter Heartbeat</span><strong>${formatRelative(task.last_update_at)}</strong></div>
+        <div><span class="muted">Letztes Update</span><strong>${formatRelative(task.last_update_at)}</strong></div>
       </div>
     </section>
   `;
@@ -292,13 +292,11 @@ function RecentTasksList(tasks) {
                 <span class="status-chip state-${task.status}">${task.status}</span>
                 <span>${statusTimeLabel(task)}</span>
                 <span>Dauer ${taskDurationLabel(task)}</span>
-                ${task.estimated_cost ? `<span>Kosten ~${formatCost(task.estimated_cost)}</span>` : ""}
               </div>
-              ${["failed", "blocked"].includes(task.status) ? `<p class="hint">${task.reason_short || "Problem erkannt"}</p>` : ""}
+              ${["failed", "blocked"].includes(task.status) ? `<p class="hint">${task.operational_effect || task.reason_short || "Problem erkannt"}</p>` : ""}
             </div>
             <span class="chevron">›</span>
-          </article>
-        `
+          </article>`
           )
           .join("")}
       </div>
@@ -321,13 +319,12 @@ function QueueList(tasks) {
                 <h3>${task.title}</h3>
                 <div class="meta-inline">
                   <span class="pill">${task.task_type}</span>
-                  <span>Wartet seit ${formatRelative(task.queued_at)}</span>
+                  <span>wartet seit ${formatRelative(task.queued_at)}</span>
                   ${task.queue_position ? `<span>Position ${task.queue_position}</span>` : ""}
                 </div>
               </div>
               <span class="chevron">›</span>
-            </article>
-          `
+            </article>`
                 )
                 .join("")
             : '<p class="empty">Keine wartenden Aufgaben.</p>'
@@ -343,40 +340,33 @@ function MetricsPanel(metrics) {
       <div class="block-head"><h2>Kennzahlen</h2></div>
       <div class="metrics-grid">
         <div><span class="muted">Kosten heute</span><strong>${formatCost(metrics.costToday)}</strong></div>
-        <div><span class="muted">Kosten 7 Tage</span><strong>${formatCost(metrics.cost7d)}</strong></div>
-        <div><span class="muted">Kosten 30 Tage</span><strong>${formatCost(metrics.cost30d)}</strong></div>
         <div><span class="muted">Tasks heute</span><strong>${metrics.tasksToday}</strong></div>
-        <div><span class="muted">Tokens heute</span><strong>${metrics.tokensToday.toLocaleString("de-DE")}</strong></div>
+        <div><span class="muted">Wartende Tasks</span><strong>${metrics.waitingTasks}</strong></div>
       </div>
     </section>
   `;
 }
 
-function ExceptionsPanel(tasks) {
-  if (!tasks.length) {
-    return "";
-  }
+function AlertsPanel(alerts) {
+  if (!alerts.length) return "";
 
   return `
     <section class="panel block">
       <div class="block-head"><h2>Auffälligkeiten</h2></div>
       <div class="task-list compact">
-        ${tasks
+        ${alerts
           .map(
-            (task) => `
-          <article class="task-row clickable" data-task-id="${task.task_id}">
+            (alert) => `
+          <article class="task-row clickable" data-task-id="${alert.task_id}">
             <div class="task-main">
-              <h3>${task.title}</h3>
+              <h3>${alert.title}</h3>
               <div class="meta-inline">
-                <span class="status-chip state-${task.status}">${task.status}</span>
-                <span>${task.reason_short || "Ungewöhnlicher Verlauf"}</span>
-                <span>${formatDateTime(getStatusTime(task))}</span>
-                ${task.estimated_cost ? `<span>${formatCost(task.estimated_cost)}</span>` : ""}
+                <span class="status-chip state-${alert.status}">${alert.status}</span>
+                <span>${alert.operator_note}</span>
               </div>
             </div>
             <span class="chevron">›</span>
-          </article>
-        `
+          </article>`
           )
           .join("")}
       </div>
@@ -396,22 +386,29 @@ function TaskDetailPanel(task) {
             <header>
               <h2>${task.title}</h2>
               <div class="meta-inline">
-                <span class="pill">${task.task_type}</span>
                 <span class="status-chip state-${task.status}">${task.status}</span>
                 <span>Trigger: ${task.trigger_source}</span>
               </div>
             </header>
 
             <section class="detail-group">
-              <h3>Zeiten</h3>
-              <ul>
-                <li>Erstellt: ${formatDateTime(task.created_at)}</li>
-                <li>In Queue: ${formatDateTime(task.queued_at)}</li>
-                <li>Gestartet: ${formatDateTime(task.started_at)}</li>
-                <li>Beendet: ${formatDateTime(task.finished_at)}</li>
-                <li>Letztes Update: ${formatDateTime(task.last_update_at)}</li>
-              </ul>
+              <h3>Ergebnis</h3>
+              <p>${task.result_summary || "Noch kein Ergebnis."}</p>
             </section>
+
+            ${
+              task.reason_category !== "none"
+                ? `<section class="detail-group warning">
+                    <h3>Problemkontext</h3>
+                    <ul>
+                      <li>Technischer Hinweis: ${task.reason_short || "—"}</li>
+                      <li>Fehlerbild: ${task.error_message || "—"}</li>
+                      <li>Operativer Effekt: ${task.operational_effect || "—"}</li>
+                      <li>Nächster Schritt: ${task.recovery_hint || "Task kann später erneut gestartet werden."}</li>
+                    </ul>
+                  </section>`
+                : ""
+            }
 
             <section class="detail-group">
               <h3>Dauerwerte</h3>
@@ -423,7 +420,7 @@ function TaskDetailPanel(task) {
             </section>
 
             <section class="detail-group">
-              <h3>Nutzung & Kosten</h3>
+              <h3>Modell / Tokens / Kosten</h3>
               <ul>
                 <li>Modell: ${task.model_name}</li>
                 <li>Total Tokens: ${task.total_tokens.toLocaleString("de-DE")}</li>
@@ -432,33 +429,19 @@ function TaskDetailPanel(task) {
             </section>
 
             <section class="detail-group">
-              <h3>Ergebnis</h3>
-              <p>${task.result_summary || "Noch kein Ergebnis."}</p>
+              <h3>Exakte Zeitstempel</h3>
+              <ul>
+                <li>Erstellt: ${formatDateTime(task.created_at)}</li>
+                <li>In Queue: ${formatDateTime(task.queued_at)}</li>
+                <li>Gestartet: ${formatDateTime(task.started_at)}</li>
+                <li>Beendet: ${formatDateTime(task.finished_at)}</li>
+                <li>Letztes Update: ${formatDateTime(task.last_update_at)}</li>
+              </ul>
             </section>
 
             ${
-              task.reason_category !== "none"
-                ? `
-              <section class="detail-group warning">
-                <h3>Problemkontext</h3>
-                <ul>
-                  <li>Kategorie: ${task.reason_category}</li>
-                  <li>Hinweis: ${task.reason_short || "—"}</li>
-                  <li>Fehler: ${task.error_message || "—"}</li>
-                </ul>
-              </section>
-            `
-                : ""
-            }
-
-            ${
               task.substeps?.length
-                ? `
-              <section class="detail-group">
-                <h3>Substeps</h3>
-                <ul>${task.substeps.map((item) => `<li>${item}</li>`).join("")}</ul>
-              </section>
-            `
+                ? `<section class="detail-group"><h3>Substeps (optional)</h3><ul>${task.substeps.map((item) => `<li>${item}</li>`).join("")}</ul></section>`
                 : ""
             }
           `
@@ -487,17 +470,23 @@ function bindInteractions() {
 }
 
 function buildMetrics(tasks) {
-  const costs = tasks.reduce((sum, task) => sum + (task.estimated_cost || 0), 0);
-  const tokens = tasks.reduce((sum, task) => sum + (task.total_tokens || 0), 0);
-  const todaysTasks = tasks.filter((task) => task.created_at?.startsWith("2026-04-23")).length;
-
+  const costToday = tasks.reduce((sum, task) => sum + (task.estimated_cost || 0), 0);
   return {
-    costToday: costs,
-    cost7d: costs * 3.1,
-    cost30d: costs * 8.9,
-    tasksToday: todaysTasks,
-    tokensToday: tokens,
+    costToday,
+    tasksToday: tasks.filter((task) => task.created_at?.startsWith("2026-04-23")).length,
+    waitingTasks: tasks.filter((task) => task.status === "queued").length,
   };
+}
+
+function buildOperationalAlerts(tasks) {
+  return tasks
+    .filter((task) => ["failed", "blocked"].includes(task.status))
+    .map((task) => ({
+      task_id: task.task_id,
+      title: task.title,
+      status: task.status,
+      operator_note: task.operational_effect || task.reason_short || "Operatives Risiko erkannt",
+    }));
 }
 
 function statusTimeLabel(task) {
@@ -505,7 +494,7 @@ function statusTimeLabel(task) {
     case "queued":
       return `wartet seit ${formatRelative(task.queued_at)}`;
     case "running":
-      return `läuft seit ${formatRelative(task.started_at)}`;
+      return `läuft seit ${formatTime(task.started_at)}`;
     case "completed":
       return `abgeschlossen um ${formatTime(task.finished_at)}`;
     case "failed":
@@ -548,30 +537,30 @@ function getStatusTime(task) {
 function formatDateTime(value) {
   if (!value) return "—";
   const date = value instanceof Date ? value : new Date(value);
-  return date.toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }) + " UTC";
+  return date.toLocaleString("de-DE", { dateStyle: "medium", timeStyle: "medium", timeZone: "UTC" }) + " UTC";
 }
 
 function formatTime(value) {
   if (!value) return "—";
   const date = new Date(value);
-  return date.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" }) + " UTC";
+  return date.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
 }
 
 function formatRelative(value) {
   if (!value) return "—";
   const date = new Date(value);
   const mins = Math.max(1, Math.floor((now - date) / 60000));
-  if (mins < 60) return `vor ${mins} min`;
+  if (mins < 60) return `vor ${mins} Min.`;
   const hours = Math.floor(mins / 60);
   const rest = mins % 60;
-  return `vor ${hours} h ${rest} min`;
+  return rest ? `vor ${hours} h ${rest} Min.` : `vor ${hours} h`;
 }
 
 function formatDuration(start, end) {
   const totalMins = Math.max(0, Math.floor((end - start) / 60000));
   const h = Math.floor(totalMins / 60);
   const m = totalMins % 60;
-  return `${h} h ${m} min`;
+  return `${h} h ${m} Min.`;
 }
 
 function formatCost(value) {
